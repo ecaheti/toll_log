@@ -37,7 +37,7 @@ public class EventOpenHelper extends SQLiteOpenHelper {
 		super(context, EVENT_BASE_NAME, factory, DATABASE_VERSION);
 	}
 
-	/**
+	/*
 	 * Création de la base
 	 */
 	@Override
@@ -45,7 +45,7 @@ public class EventOpenHelper extends SQLiteOpenHelper {
 		db.execSQL(REQUETE_CREATION_BDD);
 	}
 
-	/**
+	/*
 	 * Mise à jour de la base
 	 */
 	@Override
