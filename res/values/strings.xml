@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">Toll Logger</string>
+    <string name="hello">Welcome on Logger</string>
+	<string name="place">Choose Toll to log</string>
+	<string name="date">When ?</string>
+	<string name="today">Today</string>
+	<string name="log">Log !</string>
+	<string name="morning">Morning</string>
+	<string name="evening">Evening</string>
+	
+</resources>
