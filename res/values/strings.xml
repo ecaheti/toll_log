@@ -10,4 +10,5 @@
 	<string name="morning">Morning</string>
 	<string name="evening">Evening</string>
 	<string name="dbviewer_title">DataBase Viewer</string>
+	<string name="dbv_refresh">Refresh</string>
 </resources>

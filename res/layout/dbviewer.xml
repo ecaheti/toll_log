@@ -9,5 +9,21 @@
         android:layout_height="wrap_content"
         android:text="@string/dbviewer_title"
         android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/logwindow"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.74"
+        android:inputType="textMultiLine" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/bt_refr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dbv_refresh" />
 
 </LinearLayout>

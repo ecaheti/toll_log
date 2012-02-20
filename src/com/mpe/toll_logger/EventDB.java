@@ -1,9 +1,13 @@
 package com.mpe.toll_logger;
 
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 public class EventDB {
 	private static final int DB_VERSION = 1;
@@ -37,11 +41,16 @@ public class EventDB {
 		//on ferme l'accès à la BDD
 		mydb.close();
 	}
- 
+
 	public SQLiteDatabase getBDD(){
 		return mydb;
 	}
-	
+
+	public List GetAll() {
+		return null;
+
+	}
+
 	public long insertEvent(Event evnt){
 		//Création d'un ContentValues (fonctionne comme une HashMap)
 		ContentValues values = new ContentValues();
@@ -69,7 +78,7 @@ public class EventDB {
 	}
  
 	public Event getEventWithToll(String toll){
-		//Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
+		//Récupère dans un Cursor les valeur correspondant à un toll contenu dans la BDD (ici on sélectionne le toll grâce à son nom)
 		Cursor c = mydb.query(EVENT_TABLE, new String[] {COL_ID, COL_TOLL, COL_DATE,COL_TOD }, COL_TOLL + " LIKE \"" + toll +"\"", null, null, null, null);
 		return cursorToEvent(c);
 	}

@@ -39,5 +39,9 @@ public class Event {
 	public void setToD(boolean when_tod) {
 		this.time_of_day = when_tod;
 	}
+	
+	public String toString() {
+		return this.id + " " + this.toll + " " + this.date + " " + this.time_of_day;
+	}
 
 }
