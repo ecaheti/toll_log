@@ -5,9 +5,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.database.SQLException;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.format.Time;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -20,12 +25,14 @@ import android.widget.Toast;
 
 public class Toll_logger extends Activity {
 
+	private static final int LOG_ACTIVITY_CODE = 1;
+	
 	Button btn_fill_date;
 	Button btn_log;
 	DatePicker input_choix_date;
 	RadioGroup rdgrp_1;
 	EditText toll;
-
+	
 
 	/** Called when the activity is first created. */
 	@Override
@@ -55,6 +62,10 @@ public class Toll_logger extends Activity {
 			}
 		});
 
+		
+
+		
+		
 	}
 
 	// Set DatePicker date to RTC date
@@ -123,15 +134,27 @@ public class Toll_logger extends Activity {
 	public void write_log_DB(Event evnt){
 		//Création d'une instance de ma classe EventDB
 		EventDB myEvntDB = new EventDB(this);
-		
+
 		//Open database
-		myEvntDB.open();
+		try {
+			myEvntDB.open();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		//store event
-		myEvntDB.insertEvent(evnt);
+		try {
+			myEvntDB.insertEvent(evnt);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		//close database
-		myEvntDB.close();
-		
-		Toast.makeText(this, "Event wrote in DB", Toast.LENGTH_SHORT);
+		try {
+			myEvntDB.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		Toast.makeText(this, "Event wrote in DB", Toast.LENGTH_SHORT).show();
 	}
 	
 	// Convert DatePicker date to formatted date (only day, month, year) for storage database
@@ -149,5 +172,37 @@ public class Toll_logger extends Activity {
 		return date;
 	}
 
+    //Méthode qui se déclenchera lorsque vous appuierez sur le bouton menu du téléphone
+    public boolean onCreateOptionsMenu(Menu menu) {
+ 
+        //Création d'un MenuInflater qui va permettre d'instancier un Menu XML en un objet Menu
+        MenuInflater inflater = getMenuInflater();
+        //Instanciation du menu XML spécifier en un objet Menu
+        inflater.inflate(R.menu.menu, menu);
+ 
+        
+        return true;
+     }
+    
+    //Méthode qui se déclenchera au clic sur un item
+    public boolean onOptionsItemSelected(MenuItem item) {
+       //On regarde quel item a été cliqué grâce à son id et on déclenche une action
+       switch (item.getItemId()) {
+          case R.id.viewDB:
+             //Toast.makeText(this, "Not Available", Toast.LENGTH_SHORT).show();
+             
+             //Creating the Intent that will allow switching to other activity
+             Intent intent = new Intent(Toll_logger.this, DBViewerActivity.class);
+             
+             //Start other Activity
+             startActivityForResult(intent, LOG_ACTIVITY_CODE);
 
+             
+             return true;
+         case R.id.quit:
+             //Pour fermer l'application il suffit de faire finish()
+             finish();
+             return true;
+       }
+       return false;}
 }

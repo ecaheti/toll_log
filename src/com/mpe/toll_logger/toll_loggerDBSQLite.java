@@ -8,11 +8,11 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
 public class toll_loggerDBSQLite extends SQLiteOpenHelper {
 
-	private static final String EVENT_TABLE = "Event Toll-Logger";
+	private static final String EVENT_TABLE = "EventTollLogger";
 	private static final String COL_ID = "ID";
 	private static final String COL_TOLL = "Toll";
 	private static final String COL_DATE = "Date";
-	private static final String COL_TOD = "Time of Day";
+	private static final String COL_TOD = "TimeofDay";
 
 	private static final String CREATE_BDD = "CREATE TABLE " + EVENT_TABLE + " ("
 			+ COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " 
