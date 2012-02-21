@@ -15,17 +15,20 @@ public final class R {
         public static final int ic_launcher_perso=0x7f020001;
     }
     public static final class id {
-        public static final int bt_fill_date=0x7f060002;
-        public static final int bt_log=0x7f060007;
-        public static final int datePicker1=0x7f060001;
-        public static final int editText1=0x7f060000;
-        public static final int quit=0x7f060009;
-        public static final int rad_evening=0x7f060005;
-        public static final int rad_morning=0x7f060004;
-        public static final int radioGroup1=0x7f060006;
-        public static final int radio_bt_grp_tod=0x7f060003;
-        public static final int viewDB=0x7f060008;
-        public static final int viewlogger=0x7f06000a;
+        public static final int bt_fill_date=0x7f060005;
+        public static final int bt_log=0x7f06000a;
+        public static final int btn_refr=0x7f060002;
+        public static final int datePicker1=0x7f060004;
+        public static final int editText1=0x7f060003;
+        public static final int evnt_id_input=0x7f060001;
+        public static final int quit=0x7f06000c;
+        public static final int rad_evening=0x7f060008;
+        public static final int rad_morning=0x7f060007;
+        public static final int radioGroup1=0x7f060009;
+        public static final int radio_bt_grp_tod=0x7f060006;
+        public static final int textView1=0x7f060000;
+        public static final int viewDB=0x7f06000b;
+        public static final int viewlogger=0x7f06000d;
     }
     public static final class layout {
         public static final int dbviewer=0x7f030000;
@@ -38,12 +41,14 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f040000;
         public static final int date=0x7f040003;
+        public static final int dbviewer_evnt_id=0x7f040009;
         public static final int dbviewer_title=0x7f040008;
         public static final int evening=0x7f040007;
         public static final int hello=0x7f040001;
         public static final int log=0x7f040005;
         public static final int morning=0x7f040006;
         public static final int place=0x7f040002;
+        public static final int str_refresh=0x7f04000a;
         public static final int today=0x7f040004;
     }
 }

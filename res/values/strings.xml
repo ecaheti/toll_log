@@ -9,5 +9,8 @@
 	<string name="log">Log !</string>
 	<string name="morning">Morning</string>
 	<string name="evening">Evening</string>
-	<string name="dbviewer_title">DataBase Viewer</string>
+    <string name="dbviewer_title">DataBase Viewer</string>
+    <string name="dbviewer_evnt_id">Event id</string>
+    <string name="str_refresh">Get Event</string>
+
 </resources>

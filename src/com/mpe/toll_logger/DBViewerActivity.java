@@ -2,10 +2,14 @@ package com.mpe.toll_logger;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class DBViewerActivity extends Activity{
@@ -13,15 +17,31 @@ public class DBViewerActivity extends Activity{
 	
 	private static final int VIEWER_ACTIVITY_CODE = 1;
 	
+	
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dbviewer);
+		
+		
+		Button btn_refr = (Button)findViewById(R.id.btn_refr);
+		
+		
+		//*On attribut un écouteur d'évènement sur le bouton date
+		btn_refr.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+
+				logview();
+				
+			}
+		});
+		
 	}
 	
 	
-	
+
 	
     //Méthode qui se déclenchera lorsque vous appuierez sur le bouton menu du téléphone
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -55,4 +75,35 @@ public class DBViewerActivity extends Activity{
              return true;
        }
        return false;}
+
+    public void logview()
+    {
+    	EventDBAdapter db = new EventDBAdapter(this);
+		EditText evnt_id_input = (EditText)findViewById(R.id.evnt_id_input);
+		Cursor c;
+		//---get a title---
+        db.open();
+        c = db.getEvent(Integer.parseInt(evnt_id_input.getText().toString()));
+        if (c.moveToFirst())
+        {
+        	DisplayEvent(c);
+        }
+        else
+        {
+        	Toast.makeText(this, "No title found",Toast.LENGTH_LONG).show();
+        }
+        db.close();
+    }
+
+    public void DisplayEvent(Cursor c)
+    {
+    	Toast.makeText(this,
+    			"id: " + c.getString(0) + "\n" +
+    					"Toll: " + c.getString(1) + "\n" +
+    					"Date: " + c.getString(2) + "\n" +
+    					"ToD: " + c.getString(3),
+    					Toast.LENGTH_LONG).show();
+    }
+
+
 }

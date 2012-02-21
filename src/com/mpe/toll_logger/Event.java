@@ -1,7 +1,6 @@
 package com.mpe.toll_logger;
 
 public class Event {
-	private int id;
 	private String toll;
 	private int date;
 	private boolean time_of_day;
@@ -15,12 +14,6 @@ public class Event {
 		
 	}
 
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getToll() {
 		return toll;
 	}

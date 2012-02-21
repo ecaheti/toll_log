@@ -3,6 +3,8 @@ package com.mpe.toll_logger;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -133,9 +135,15 @@ public class Toll_logger extends Activity {
 	// Append new string to text file for simple storage 
 	public void write_log_DB(Event evnt){
 		//Création d'une instance de ma classe EventDB
-		
+		EventDBAdapter db = new EventDBAdapter(this);
+        
+        //---add 2 titles---
+        db.open();
+        long id;
+        id = db.insertEvent(evnt);
+        db.close();
 
-		Toast.makeText(this, "Event wrote in DB", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, "Event wrote in DB event.db", Toast.LENGTH_SHORT).show();
 	}
 	
 	// Convert DatePicker date to formatted date (only day, month, year) for storage database
