@@ -133,26 +133,7 @@ public class Toll_logger extends Activity {
 	// Append new string to text file for simple storage 
 	public void write_log_DB(Event evnt){
 		//Création d'une instance de ma classe EventDB
-		EventDB myEvntDB = new EventDB(this);
-
-		//Open database
-		try {
-			myEvntDB.open();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		//store event
-		try {
-			myEvntDB.insertEvent(evnt);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		//close database
-		try {
-			myEvntDB.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		
 
 		Toast.makeText(this, "Event wrote in DB", Toast.LENGTH_SHORT).show();
 	}
